@@ -90,7 +90,7 @@ public class Operaciones {
 	
 		//---------------------------------------- INGRESAR MEDICAMENTO -------------------------------------------------------------
 			
-		 public void ingresarMedicamento(GraphDatabaseService graphdb,String nombre, String fechaInicio,  String fechaFin, int dosis) {
+		 public void ingresarMedicamento(GraphDatabaseService graphdb,String nombre, String fechaInicio,  String fechaFin, String dosis) {
 	     	
 	     	try (Transaction tx = graphdb.beginTx()) {
 	     		// Operaciones de la base de datos
@@ -114,7 +114,7 @@ public class Operaciones {
 	     	try (Transaction tx = graphdb.beginTx()) {
 	     		// Operaciones de la base de datos
 	         	
-	     		Node medicamento = graphdb.findNode(Denominacion.PACIENTE, "Nombre", nombre);
+	     		Node medicamento = graphdb.findNode(Denominacion.MEDICAMENTO, "Nombre", nombre);
 	     		
 	     		if (medicamento != null) {
 		     		medicamento.delete();
@@ -161,4 +161,18 @@ public class Operaciones {
 		         }
 		     } );
 		 }
+		 
+		//---------------------------------------- ESPERAR DELAY -------------------------------------------------------------
+		 
+		 public void esperar() {
+			 try {
+	        		Thread.sleep(2000);
+	        	}
+	        	catch (Exception e){
+	        	}
+		 }
+		 
+		
+		 
+		 
 }
