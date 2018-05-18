@@ -44,6 +44,7 @@ public class Operaciones {
 	         	System.out.println("Doctor eleminado con exito");
 	     		}
 	     		
+	     		if (doctor == null)
 	     		System.out.println("No se ha encontrado ningun doctor con ese No. Colegiado");
 	     		tx.success();
 	     	}
@@ -80,6 +81,7 @@ public class Operaciones {
 	         	System.out.println("Paciente eleminado con exito");
 	     		}
 	     		
+	     		if (paciente == null)
 	     		System.out.println("No se ha encontrado ningun paciente con ese nombre");
 	         	
 	     		tx.success();
@@ -119,6 +121,7 @@ public class Operaciones {
 		         	System.out.println("Medicamento eleminado con exito");
 		     		}
 		     		
+	     		if (medicamento == null)
 		     		System.out.println("No se ha encontrado ningun Medicamento con ese nombre");
 	         	
 	     		tx.success();
