@@ -4,6 +4,7 @@ import org.neo4j.cypher.internal.frontend.v2_3.ast.functions.Sum;
 import org.neo4j.graphdb.GraphDatabaseService;
 import org.neo4j.graphdb.Label;
 import org.neo4j.graphdb.Node;
+import org.neo4j.graphdb.Relationship;
 import org.neo4j.graphdb.RelationshipType;
 import org.neo4j.graphdb.ResourceIterator;
 import org.neo4j.graphdb.Transaction;
@@ -130,16 +131,37 @@ public class Operaciones {
 		 
 		//---------------------------------------- INGRESAR RElACION CONOCE -------------------------------------------------------------
 			
-		 public void ingresarConoce(GraphDatabaseService graphdb,Label denominacion, String nombrePresona1, String nombrePresona2) {
+		 public void ingresarConoce(GraphDatabaseService graphdb,Label denominacion1, String nombrePersona1,Label denominacion2, String nombrePersona2) {
 	     	
 	     	try (Transaction tx = graphdb.beginTx()) {
 	     		// Operaciones de la base de datos
 	         	
-	     		Node Persona1 = graphdb.findNode(denominacion, "Nombre", nombrePresona1);
+	     		Node Persona1 = graphdb.findNode(denominacion1, "Nombre", nombrePersona1);
+	     		Node Persona2 = graphdb.findNode(denominacion2, "Nombre", nombrePersona2);
 	     		
-
+	     		Relationship relacion = Persona1.createRelationshipTo(Persona2, Relaciones.CONOCE);
 	         	
-	         	System.out.println("Medicamento ingresado con exito");
+	         	System.out.println("Relacion establecia con exito");
+	         	
+	     		tx.success();
+	     	}
+		}
+		 
+		
+		//---------------------------------------- INGRESAR VISITA -------------------------------------------------------------
+			
+		 public void ingresarVisita(GraphDatabaseService graphdb,String paciente, String medico, String fecha) {
+	     	
+	     	try (Transaction tx = graphdb.beginTx()) {
+	     		// Operaciones de la base de datos
+	         	
+	     		Node Persona1 = graphdb.findNode(Denominacion.PACIENTE, "Nombre", paciente);
+	     		Node Persona2 = graphdb.findNode(Denominacion.DOCTOR, "Nombre", medico);
+	     		
+	     		Relationship relacion = Persona1.createRelationshipTo(Persona2, Relaciones.VISITA);
+	         	relacion.setProperty("Fecha", fecha);
+	     		
+	         	System.out.println("Vsita establecia con exito");
 	         	
 	     		tx.success();
 	     	}
