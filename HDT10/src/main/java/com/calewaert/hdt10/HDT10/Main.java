@@ -4,7 +4,9 @@ package com.calewaert.hdt10.HDT10;
  * Utilizando neo4j
  * Como extra:
  * Se puede acceder a este desde el navegador web por medio de http://localhost:7474
- * Primero se debe iniciar el servidor de neo4j desde el cmd
+ * Primero se debe iniciar el servidor de neo4j desde el cmd ubicado en:  HDT10\neo4j-community-3.3.5\bin 
+ * Se inicia bin\neo4j start
+ * Se cierra bin\neo4j stop
  * Usuario: neo4j
  * Password: 1234
 */
