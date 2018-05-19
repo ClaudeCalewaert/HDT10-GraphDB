@@ -293,6 +293,18 @@ public class Main
             		break;
             	}
         	
+        	System.out.print("\nIngrese la fecha de la visita:   ");
+        	try { //Evita que el programa entre en conflicto si se ingresa un dato erroneo por el usuario
+            	fecha = entradaUsuario.nextLine();
+            	}
+            	catch (Exception e) {
+            		System.out.println("\nVerifique que ha ingresado correctamente el dato");
+            		System.out.println("Saliendo de establecer visita ...");
+            		operacionesDB.esperar();
+            		entradaUsuario.nextLine(); //Recibe entrada en caso quedara un valor en espera, evita fallos
+            		break;
+            	}
+        	
         	operacionesDB.ingresarVisita(graphDB, paciente, medico, fecha);
     		break;	
     		
